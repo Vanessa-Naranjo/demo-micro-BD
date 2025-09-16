@@ -2,33 +2,50 @@ package com.lvnr.demo.micro.bd.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.lvnr.demo.micro.bd.dto.PersonaDto;
 import com.lvnr.demo.micro.bd.service.PersonaService;
 
+@RestController
 public class PersonaController {
 
+	@Autowired
 	private PersonaService personaService;
 
-	public List<PersonaDto> consultarPersonas(List<PersonaDto> personas) {
-		personaService.consultarPersonas();
-		return personas;
+	@GetMapping
+	public List<PersonaDto> consultarPersonas() {
+		return personaService.consultarPersonas();
+
 	}
 
-	public PersonaDto consultarPersonaByDocumento(String tipoDocumento, String documento, PersonaDto personaDto) {
-		personaService.consultarPersonaByDocumento(tipoDocumento, documento);
-		return personaDto;
+	@GetMapping("/consultarpordocumento")
+	public PersonaDto consultarPersonaByDocumento(@RequestParam String tipoDocumento, @RequestParam String documento) {
+		return personaService.consultarPersonaByDocumento(tipoDocumento, documento);
+
 	}
 
-	public void crearPersona(PersonaDto personaDto) {
-		personaService.crearPersona(personaDto);
+	@PostMapping
+	public PersonaDto crearPersona(@RequestBody PersonaDto personaDto) {
+		return personaService.crearPersona(personaDto);
 	}
 
-	public PersonaDto actualizarPersona(String id, PersonaDto personaDto) {
-		personaService.actualizarPersona(id, personaDto);
-		return personaDto;
+	@PutMapping("/{id}")
+	public PersonaDto actualizarPersona(@PathVariable String id, @RequestBody PersonaDto personaDto) {
+		return personaService.actualizarPersona(id, personaDto);
+
 	}
 
-	public void eliminarPersonaByDocumento(String tipoDocumento, String documento) {
+	@DeleteMapping("/{tipoDcumento}/{documento}")
+	public void eliminarPersonaByDocumento(@PathVariable String tipoDocumento, @PathVariable String documento) {
 		personaService.eliminarPersonaByDocumento(tipoDocumento, documento);
 	}
 

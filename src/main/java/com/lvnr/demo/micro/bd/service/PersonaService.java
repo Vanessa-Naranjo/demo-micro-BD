@@ -26,25 +26,23 @@ public class PersonaService {
 		return null;
 	}
 
-	public void crearPersona(PersonaDto personaDto) {
+	public PersonaDto crearPersona(PersonaDto personaDto) {
 		PersonaEntity personaEntity = new PersonaEntity();
-		personaEntity.setId(personaDto.getId());
 		personaEntity.setTipoDocumento(personaDto.getTipoDocumento());
 		personaEntity.setDocumento(personaDto.getDocumento());
 		personaEntity.setNombres(personaDto.getNombres());
 		personaEntity.setApellidos(personaDto.getApellidos());
 		this.personas.add(personaDto);
-
+		return personaDto;
 	}
 
 	public PersonaDto actualizarPersona(String id, PersonaDto personaDto) {
 		PersonaEntity personaEntity = new PersonaEntity();
-		personaEntity.setId(personaDto.getId());
 		personaEntity.setTipoDocumento(personaDto.getTipoDocumento());
 		personaEntity.setDocumento(personaDto.getDocumento());
 		personaEntity.setNombres(personaDto.getNombres());
 		personaEntity.setApellidos(personaDto.getApellidos());
-		this.personas.add(personaDto);
+		personas.add(personaDto);
 		return personaDto;
 	}
 
