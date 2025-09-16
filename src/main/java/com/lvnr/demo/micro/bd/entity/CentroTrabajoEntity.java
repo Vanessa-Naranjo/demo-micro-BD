@@ -15,7 +15,7 @@ public class CentroTrabajoEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String codigo;
-	@Column(name="NOMBRECENTRO")
+	@Column(name = "NOMBRECENTRO")
 	private String nombreCentro;
 	private String direccion;
 	private String codigoPostal;
