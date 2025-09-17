@@ -11,18 +11,18 @@ import jakarta.persistence.Table;
 public class ClienteEntity {
 
 	
-	private PersonaDto personaDto;
+	//private PersonaDto personaDto;
 	@Id
 	private String email;
 	private String celular;
 
-	public PersonaDto getPersonaDto() {
+	/*public PersonaDto getPersonaDto() {
 		return personaDto;
 	}
 
 	public void setPersonaDto(PersonaDto personaDto) {
 		this.personaDto = personaDto;
-	}
+	}*/
 
 	public String getEmail() {
 		return email;

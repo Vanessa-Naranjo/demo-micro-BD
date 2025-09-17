@@ -2,17 +2,17 @@ package com.lvnr.demo.micro.bd.dto;
 
 public class PersonaDto {
 
-	private String id;
+	private Integer id;
 	private String tipoDocumento;
 	private String documento;
 	private String nombres;
 	private String apellidos;
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

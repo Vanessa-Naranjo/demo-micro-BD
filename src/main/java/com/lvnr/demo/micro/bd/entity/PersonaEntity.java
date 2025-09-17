@@ -1,5 +1,8 @@
 package com.lvnr.demo.micro.bd.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +20,8 @@ public class PersonaEntity {
 	private String documento;
 	private String nombres;
 	private String apellidos;
+	private LocalDate fechaCreacion;
+	private LocalDateTime fechaModificacion;
 
 	public Integer getId() {
 		return id;
@@ -56,6 +61,22 @@ public class PersonaEntity {
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
+	}
+
+	public LocalDate getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDate fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public LocalDateTime getFechaModificacion() {
+		return fechaModificacion;
+	}
+
+	public void setFechaModificacion(LocalDateTime fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
 	}
 
 }

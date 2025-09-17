@@ -1,17 +1,23 @@
 package com.lvnr.demo.micro.bd.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lvnr.demo.micro.bd.dto.PersonaDto;
 import com.lvnr.demo.micro.bd.entity.PersonaEntity;
+import com.lvnr.demo.micro.bd.repository.PersonaRepository;
 
 @Service
 public class PersonaService {
 
 	private List<PersonaDto> personas;
+	@Autowired
+	private PersonaRepository personaRepository;
 
 	public List<PersonaDto> consultarPersonas() {
 		return personas;
@@ -32,7 +38,12 @@ public class PersonaService {
 		personaEntity.setDocumento(personaDto.getDocumento());
 		personaEntity.setNombres(personaDto.getNombres());
 		personaEntity.setApellidos(personaDto.getApellidos());
-		this.personas.add(personaDto);
+		personaEntity.setFechaCreacion(LocalDate.now());
+		personaEntity.setFechaModificacion(LocalDateTime.now());
+
+		this.personaRepository.save(personaEntity);
+
+		personaDto.setId(personaEntity.getId());
 		return personaDto;
 	}
 

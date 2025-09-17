@@ -12,13 +12,12 @@ import jakarta.persistence.Table;
 public class UsuarioEntity {
 
 	
-	private PersonaDto personaDto;
-	
-	private CentroTrabajoDto centroTrabajoDto;
+	//private PersonaDto personaDto;
+	//private CentroTrabajoDto centroTrabajoDto;
 	@Id
 	private String codigoUsuario;
 
-	public PersonaDto getPersonaDto() {
+	/*public PersonaDto getPersonaDto() {
 		return personaDto;
 	}
 
@@ -32,7 +31,7 @@ public class UsuarioEntity {
 
 	public void setCentroTrabajoDto(CentroTrabajoDto centroTrabajoDto) {
 		this.centroTrabajoDto = centroTrabajoDto;
-	}
+	}*/
 
 	public String getCodigoUsuario() {
 		return codigoUsuario;
