@@ -18,7 +18,7 @@ public class CentroTrabajoEntity {
 	@Column(name = "NOMBRECENTRO")
 	private String nombreCentro;
 	private String direccion;
-	private String codigoPostal;
+	private Integer codigoPostal;
 
 	public Integer getId() {
 		return id;
@@ -52,11 +52,11 @@ public class CentroTrabajoEntity {
 		this.direccion = direccion;
 	}
 
-	public String getCodigoPostal() {
+	public Integer getCodigoPostal() {
 		return codigoPostal;
 	}
 
-	public void setCodigoPostal(String codigoPostal) {
+	public void setCodigoPostal(Integer codigoPostal) {
 		this.codigoPostal = codigoPostal;
 	}
 
