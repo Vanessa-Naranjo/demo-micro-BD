@@ -1,5 +1,6 @@
 package com.lvnr.demo.micro.bd.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,8 +20,9 @@ public class ClienteEntity {
 	@Column(unique = true)
 	private String email;
 	private String celular;
-	@OneToOne
-	@JoinColumn(name = "PERSONA_ID")
+	
+	@OneToOne (cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "PERSONA_ID", referencedColumnName = "ID")
 	private PersonaEntity personaEntity;
 
 	public String getEmail() {

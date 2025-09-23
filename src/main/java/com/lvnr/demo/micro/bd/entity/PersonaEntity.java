@@ -3,6 +3,7 @@ package com.lvnr.demo.micro.bd.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +18,7 @@ public class PersonaEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String tipoDocumento;
+	@Column(unique = true)
 	private String documento;
 	private String nombres;
 	private String apellidos;

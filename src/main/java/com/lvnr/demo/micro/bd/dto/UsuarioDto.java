@@ -4,7 +4,7 @@ public class UsuarioDto {
 
 	private PersonaDto personaDto;
 	private CentroTrabajoDto centroTrabajoDto;
-	private String codigoUsuario;
+	private Integer codigoUsuario;
 
 	public PersonaDto getPersonaDto() {
 		return personaDto;
@@ -22,11 +22,11 @@ public class UsuarioDto {
 		this.centroTrabajoDto = centroTrabajoDto;
 	}
 
-	public String getCodigoUsuario() {
+	public Integer getCodigoUsuario() {
 		return codigoUsuario;
 	}
 
-	public void setCodigoUsuario(String codigoUsuario) {
+	public void setCodigoUsuario(Integer codigoUsuario) {
 		this.codigoUsuario = codigoUsuario;
 	}
 

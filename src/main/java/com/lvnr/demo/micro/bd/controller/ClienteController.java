@@ -23,5 +23,10 @@ public class ClienteController {
 	public void crearCliente(@RequestBody ClienteDto clienteDto) {
 		clienteService.crearClientes(clienteDto);
 	}
+	
+	@PostMapping ("/crearclientecuandoexista")
+	public void crearClienteCuandoExistePersona(@RequestBody ClienteDto clienteDto) {
+		clienteService.crearClienteCuandoExistePersona(clienteDto);
+	}
 
 }
