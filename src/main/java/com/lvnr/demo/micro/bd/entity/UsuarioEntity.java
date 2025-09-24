@@ -1,5 +1,7 @@
 package com.lvnr.demo.micro.bd.entity;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,14 +17,15 @@ public class UsuarioEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(unique = true)
 	private Integer codigoUsuario;
 
-	@OneToOne
-	@JoinColumn(name = "PERSONA_ID")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "PERSONA_ID", referencedColumnName = "ID")
 	private PersonaEntity personaEntity;
 
-	@OneToOne
-	@JoinColumn(name = "CENTRO_ID")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "CENTRO_ID", referencedColumnName = "ID")
 	private CentroTrabajoEntity centroTrabajoEntity;
 
 	public Integer getId() {
