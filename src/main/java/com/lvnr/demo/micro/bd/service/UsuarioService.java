@@ -37,6 +37,8 @@ public class UsuarioService {
 		CentroTrabajoEntity centroTrabajoEntity = new CentroTrabajoEntity();
 		centroTrabajoEntity.setCodigo(usuarioDto.getCentroTrabajoDto().getCodigo());
 		centroTrabajoEntity.setNombreCentro(usuarioDto.getCentroTrabajoDto().getNombreCentro());
+		centroTrabajoEntity.setDireccion(usuarioDto.getCentroTrabajoDto().getDireccion());
+		centroTrabajoEntity.setCodigoPostal(usuarioDto.getCentroTrabajoDto().getCodigoPostal());
 		usuarioEntity.setCentroTrabajoEntity(centroTrabajoEntity);
 
 		usuarioRepository.save(usuarioEntity);
@@ -53,6 +55,8 @@ public class UsuarioService {
 		CentroTrabajoEntity centroTrabajoEntity = new CentroTrabajoEntity();
 		centroTrabajoEntity.setCodigo(usuarioDto.getCentroTrabajoDto().getCodigo());
 		centroTrabajoEntity.setNombreCentro(usuarioDto.getCentroTrabajoDto().getNombreCentro());
+		centroTrabajoEntity.setDireccion(usuarioDto.getCentroTrabajoDto().getDireccion());
+		centroTrabajoEntity.setCodigoPostal(usuarioDto.getCentroTrabajoDto().getCodigoPostal());
 		usuarioEntity.setCentroTrabajoEntity(centroTrabajoEntity);
 
 		usuarioRepository.save(usuarioEntity);

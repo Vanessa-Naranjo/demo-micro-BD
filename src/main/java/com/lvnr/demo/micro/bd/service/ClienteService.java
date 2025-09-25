@@ -1,5 +1,8 @@
 package com.lvnr.demo.micro.bd.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +30,8 @@ public class ClienteService {
 		personaEntity.setApellidos(clienteDto.getPersonaDto().getApellidos());
 		personaEntity.setTipoDocumento(clienteDto.getPersonaDto().getTipoDocumento());
 		personaEntity.setDocumento(clienteDto.getPersonaDto().getDocumento());
+		personaEntity.setFechaCreacion(LocalDate.now());
+		personaEntity.setFechaModificacion(LocalDateTime.now());
 		clienteEntity.setPersonaEntity(personaEntity);
 
 		clienteRepository.save(clienteEntity);
