@@ -9,7 +9,7 @@ public class CentroTrabajoDto {
 	private String nombreCentro;
 	private String direccion;
 	private int codigoPostal;
-	private List<UsuarioDto> usarios;
+	private List<UsuarioDto> usuarios;
 
 	public Integer getId() {
 		return id;
@@ -51,12 +51,12 @@ public class CentroTrabajoDto {
 		this.codigoPostal = codigoPostal;
 	}
 
-	public List<UsuarioDto> getUsarios() {
-		return usarios;
+	public List<UsuarioDto> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setUsarios(List<UsuarioDto> usarios) {
-		this.usarios = usarios;
+	public void setUsuarios(List<UsuarioDto> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 }

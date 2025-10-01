@@ -1,5 +1,7 @@
 package com.lvnr.demo.micro.bd.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lvnr.demo.micro.bd.dto.CentroTrabajoDto;
+import com.lvnr.demo.micro.bd.dto.PersonaDto;
 import com.lvnr.demo.micro.bd.dto.UsuarioDto;
 import com.lvnr.demo.micro.bd.entity.CentroTrabajoEntity;
+import com.lvnr.demo.micro.bd.entity.PersonaEntity;
 import com.lvnr.demo.micro.bd.entity.UsuarioEntity;
 import com.lvnr.demo.micro.bd.repository.CentroTrabajoRepository;
 
@@ -43,17 +47,29 @@ public class CentroTrabajoService {
 			centroTrabajoDto.setDireccion(centroTrabajoEntity.getDireccion());
 			centroTrabajoDto.setCodigoPostal(centroTrabajoEntity.getCodigoPostal());
 			
-			//centroTrabajoDto.setUsarios(new ArrayList<>());
-			List<UsuarioDto> usuariosDto =new ArrayList<>();
 			
+
+			// centroTrabajoDto.setUsuarios(new ArrayList<>());
+			List<UsuarioDto> usuariosDto = new ArrayList<>();
+
 			for (UsuarioEntity usuarioEntity : centroTrabajoEntity.getUsuarios()) {
 				UsuarioDto usuarioDto = new UsuarioDto();
 				usuarioDto.setCodigoUsuario(usuarioEntity.getCodigoUsuario());
-				//centroTrabajoDto.getUsarios().add(usuarioDto);
+				// centroTrabajoDto.getUsuarios().add(usuarioDto);
 				
+				PersonaDto personaDto = new PersonaDto();
+				personaDto.setId(usuarioEntity.getPersonaEntity().getId());
+				personaDto.setTipoDocumento(usuarioEntity.getPersonaEntity().getTipoDocumento());
+				personaDto.setDocumento(usuarioEntity.getPersonaEntity().getDocumento());
+				personaDto.setNombres(usuarioEntity.getPersonaEntity().getNombres());
+				personaDto.setApellidos(usuarioEntity.getPersonaEntity().getApellidos());
+				usuarioDto.setPersonaDto(personaDto);
+			
 				usuariosDto.add(usuarioDto);
+				
 			}
-			centroTrabajoDto.setUsarios(usuariosDto);
+
+			centroTrabajoDto.setUsuarios(usuariosDto);
 			centrosdeTrabajoDto.add(centroTrabajoDto);
 		}
 
