@@ -1,10 +1,13 @@
 package com.lvnr.demo.micro.bd.entity;
 
+import java.util.List;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +22,9 @@ public class CentroTrabajoEntity {
 	private String nombreCentro;
 	private String direccion;
 	private Integer codigoPostal;
+
+	@OneToMany(mappedBy = "centroTrabajoEntity", cascade = CascadeType.ALL)
+	private List<UsuarioEntity> usuarios;
 
 	public Integer getId() {
 		return id;

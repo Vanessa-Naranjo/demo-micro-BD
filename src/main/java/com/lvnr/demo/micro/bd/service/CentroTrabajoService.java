@@ -1,5 +1,7 @@
 package com.lvnr.demo.micro.bd.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,10 @@ public class CentroTrabajoService {
 		this.centroTrabajoRepository.save(centroTrabajoEntity);
 		centroTrabajoDto.setId(centroTrabajoEntity.getId());
 		return centroTrabajoDto;
+	}
+
+	public List<CentroTrabajoDto> consultarCentrosTrabajo() {
+		return null;
 	}
 
 }
