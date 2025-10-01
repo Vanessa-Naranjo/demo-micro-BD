@@ -1,5 +1,7 @@
 package com.lvnr.demo.micro.bd.dto;
 
+import java.util.List;
+
 public class CentroTrabajoDto {
 
 	private Integer id;
@@ -7,6 +9,7 @@ public class CentroTrabajoDto {
 	private String nombreCentro;
 	private String direccion;
 	private int codigoPostal;
+	private List<UsuarioDto> usarios;
 
 	public Integer getId() {
 		return id;
@@ -46,6 +49,14 @@ public class CentroTrabajoDto {
 
 	public void setCodigoPostal(int codigoPostal) {
 		this.codigoPostal = codigoPostal;
+	}
+
+	public List<UsuarioDto> getUsarios() {
+		return usarios;
+	}
+
+	public void setUsarios(List<UsuarioDto> usarios) {
+		this.usarios = usarios;
 	}
 
 }

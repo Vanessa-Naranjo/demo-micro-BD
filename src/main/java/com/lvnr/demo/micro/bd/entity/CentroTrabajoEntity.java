@@ -66,4 +66,12 @@ public class CentroTrabajoEntity {
 		this.codigoPostal = codigoPostal;
 	}
 
+	public List<UsuarioEntity> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<UsuarioEntity> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 }
