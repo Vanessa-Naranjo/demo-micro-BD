@@ -1,6 +1,7 @@
 package com.lvnr.demo.micro.bd.entity;
 
 import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

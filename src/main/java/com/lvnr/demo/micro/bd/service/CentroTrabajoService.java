@@ -1,7 +1,5 @@
 package com.lvnr.demo.micro.bd.service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,6 @@ import com.lvnr.demo.micro.bd.dto.CentroTrabajoDto;
 import com.lvnr.demo.micro.bd.dto.PersonaDto;
 import com.lvnr.demo.micro.bd.dto.UsuarioDto;
 import com.lvnr.demo.micro.bd.entity.CentroTrabajoEntity;
-import com.lvnr.demo.micro.bd.entity.PersonaEntity;
 import com.lvnr.demo.micro.bd.entity.UsuarioEntity;
 import com.lvnr.demo.micro.bd.repository.CentroTrabajoRepository;
 
@@ -46,8 +43,6 @@ public class CentroTrabajoService {
 			centroTrabajoDto.setNombreCentro(centroTrabajoEntity.getNombreCentro());
 			centroTrabajoDto.setDireccion(centroTrabajoEntity.getDireccion());
 			centroTrabajoDto.setCodigoPostal(centroTrabajoEntity.getCodigoPostal());
-			
-			
 
 			// centroTrabajoDto.setUsuarios(new ArrayList<>());
 			List<UsuarioDto> usuariosDto = new ArrayList<>();
@@ -56,7 +51,7 @@ public class CentroTrabajoService {
 				UsuarioDto usuarioDto = new UsuarioDto();
 				usuarioDto.setCodigoUsuario(usuarioEntity.getCodigoUsuario());
 				// centroTrabajoDto.getUsuarios().add(usuarioDto);
-				
+
 				PersonaDto personaDto = new PersonaDto();
 				personaDto.setId(usuarioEntity.getPersonaEntity().getId());
 				personaDto.setTipoDocumento(usuarioEntity.getPersonaEntity().getTipoDocumento());
@@ -64,9 +59,9 @@ public class CentroTrabajoService {
 				personaDto.setNombres(usuarioEntity.getPersonaEntity().getNombres());
 				personaDto.setApellidos(usuarioEntity.getPersonaEntity().getApellidos());
 				usuarioDto.setPersonaDto(personaDto);
-			
+
 				usuariosDto.add(usuarioDto);
-				
+
 			}
 
 			centroTrabajoDto.setUsuarios(usuariosDto);

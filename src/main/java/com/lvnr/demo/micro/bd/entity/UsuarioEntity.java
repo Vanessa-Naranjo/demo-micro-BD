@@ -26,7 +26,7 @@ public class UsuarioEntity {
 	@JoinColumn(name = "PERSONA_ID", referencedColumnName = "ID")
 	private PersonaEntity personaEntity;
 
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CENTRO_ID", referencedColumnName = "ID")
 	private CentroTrabajoEntity centroTrabajoEntity;
 

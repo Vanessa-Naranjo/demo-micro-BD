@@ -25,46 +25,56 @@ public class UsuarioService {
 	@Autowired
 	private CentroTrabajoRepository centroTrabajoRepository;
 
-	/*public void crearusuario(UsuarioDto usuarioDto) {
-		UsuarioEntity usuarioEntity = new UsuarioEntity();
-		usuarioEntity.setCodigoUsuario(usuarioDto.getCodigoUsuario());
+	/*
+	 * public void crearusuario(UsuarioDto usuarioDto) { UsuarioEntity usuarioEntity
+	 * = new UsuarioEntity();
+	 * usuarioEntity.setCodigoUsuario(usuarioDto.getCodigoUsuario());
+	 * 
+	 * PersonaEntity personaEntity = new PersonaEntity();
+	 * personaEntity.setNombres(usuarioDto.getPersonaDto().getNombres());
+	 * personaEntity.setApellidos(usuarioDto.getPersonaDto().getApellidos());
+	 * personaEntity.setTipoDocumento(usuarioDto.getPersonaDto().getTipoDocumento())
+	 * ; personaEntity.setDocumento(usuarioDto.getPersonaDto().getDocumento());
+	 * personaEntity.setFechaCreacion(LocalDate.now());
+	 * personaEntity.setFechaModificacion(LocalDateTime.now());
+	 * usuarioEntity.setPersonaEntity(personaEntity);
+	 * 
+	 * CentroTrabajoEntity centroTrabajoEntity = new CentroTrabajoEntity();
+	 * centroTrabajoEntity.setCodigo(usuarioDto.getCentroTrabajoDto().getCodigo());
+	 * centroTrabajoEntity.setNombreCentro(usuarioDto.getCentroTrabajoDto().
+	 * getNombreCentro());
+	 * centroTrabajoEntity.setDireccion(usuarioDto.getCentroTrabajoDto().
+	 * getDireccion());
+	 * centroTrabajoEntity.setCodigoPostal(usuarioDto.getCentroTrabajoDto().
+	 * getCodigoPostal());
+	 * usuarioEntity.setCentroTrabajoEntity(centroTrabajoEntity);
+	 * 
+	 * usuarioRepository.save(usuarioEntity);
+	 * 
+	 * }
+	 */
 
-		PersonaEntity personaEntity = new PersonaEntity();
-		personaEntity.setNombres(usuarioDto.getPersonaDto().getNombres());
-		personaEntity.setApellidos(usuarioDto.getPersonaDto().getApellidos());
-		personaEntity.setTipoDocumento(usuarioDto.getPersonaDto().getTipoDocumento());
-		personaEntity.setDocumento(usuarioDto.getPersonaDto().getDocumento());
-		personaEntity.setFechaCreacion(LocalDate.now());
-		personaEntity.setFechaModificacion(LocalDateTime.now());
-		usuarioEntity.setPersonaEntity(personaEntity);
-
-		CentroTrabajoEntity centroTrabajoEntity = new CentroTrabajoEntity();
-		centroTrabajoEntity.setCodigo(usuarioDto.getCentroTrabajoDto().getCodigo());
-		centroTrabajoEntity.setNombreCentro(usuarioDto.getCentroTrabajoDto().getNombreCentro());
-		centroTrabajoEntity.setDireccion(usuarioDto.getCentroTrabajoDto().getDireccion());
-		centroTrabajoEntity.setCodigoPostal(usuarioDto.getCentroTrabajoDto().getCodigoPostal());
-		usuarioEntity.setCentroTrabajoEntity(centroTrabajoEntity);
-
-		usuarioRepository.save(usuarioEntity);
-
-	}*/
-	
-	/*public void crearUsuarioCuandoExistePersona(UsuarioDto usuarioDto) {
-	UsuarioEntity usuarioEntity = new UsuarioEntity();
-	usuarioEntity.setCodigoUsuario(usuarioDto.getCodigoUsuario());
-
-	PersonaEntity personaEntity = personaRepository.findById(usuarioDto.getPersonaDto().getId()).get();
-	usuarioEntity.setPersonaEntity(personaEntity);
-
-	CentroTrabajoEntity centroTrabajoEntity = new CentroTrabajoEntity();
-	centroTrabajoEntity.setCodigo(usuarioDto.getCentroTrabajoDto().getCodigo());
-	centroTrabajoEntity.setNombreCentro(usuarioDto.getCentroTrabajoDto().getNombreCentro());
-	centroTrabajoEntity.setDireccion(usuarioDto.getCentroTrabajoDto().getDireccion());
-	centroTrabajoEntity.setCodigoPostal(usuarioDto.getCentroTrabajoDto().getCodigoPostal());
-	usuarioEntity.setCentroTrabajoEntity(centroTrabajoEntity);
-
-	usuarioRepository.save(usuarioEntity);
-}*/
+	/*
+	 * public void crearUsuarioCuandoExistePersona(UsuarioDto usuarioDto) {
+	 * UsuarioEntity usuarioEntity = new UsuarioEntity();
+	 * usuarioEntity.setCodigoUsuario(usuarioDto.getCodigoUsuario());
+	 * 
+	 * PersonaEntity personaEntity =
+	 * personaRepository.findById(usuarioDto.getPersonaDto().getId()).get();
+	 * usuarioEntity.setPersonaEntity(personaEntity);
+	 * 
+	 * CentroTrabajoEntity centroTrabajoEntity = new CentroTrabajoEntity();
+	 * centroTrabajoEntity.setCodigo(usuarioDto.getCentroTrabajoDto().getCodigo());
+	 * centroTrabajoEntity.setNombreCentro(usuarioDto.getCentroTrabajoDto().
+	 * getNombreCentro());
+	 * centroTrabajoEntity.setDireccion(usuarioDto.getCentroTrabajoDto().
+	 * getDireccion());
+	 * centroTrabajoEntity.setCodigoPostal(usuarioDto.getCentroTrabajoDto().
+	 * getCodigoPostal());
+	 * usuarioEntity.setCentroTrabajoEntity(centroTrabajoEntity);
+	 * 
+	 * usuarioRepository.save(usuarioEntity); }
+	 */
 
 	public void crearusuario(UsuarioDto usuarioDto) {
 		UsuarioEntity usuarioEntity = new UsuarioEntity();
@@ -79,17 +89,18 @@ public class UsuarioService {
 		personaEntity.setFechaModificacion(LocalDateTime.now());
 		usuarioEntity.setPersonaEntity(personaEntity);
 
-		CentroTrabajoEntity centroTrabajoEntity = this.centroTrabajoRepository.findById(usuarioDto.getCentroTrabajoDto().getId()).get();
+		CentroTrabajoEntity centroTrabajoEntity = this.centroTrabajoRepository
+				.findById(usuarioDto.getCentroTrabajoDto().getId()).get();
 		usuarioEntity.setCentroTrabajoEntity(centroTrabajoEntity);
 
 		usuarioRepository.save(usuarioEntity);
 	}
-	
+
 	public void crearUsuariov2(UsuarioDto usuarioDto, Integer centroTrabajoId) {
 		UsuarioEntity usuarioEntity = new UsuarioEntity();
 		usuarioEntity.setCodigoUsuario(usuarioDto.getCodigoUsuario());
 
-		PersonaEntity personaEntity=new PersonaEntity();
+		PersonaEntity personaEntity = new PersonaEntity();
 		personaEntity.setNombres(usuarioDto.getPersonaDto().getNombres());
 		personaEntity.setApellidos(usuarioDto.getPersonaDto().getApellidos());
 		personaEntity.setTipoDocumento(usuarioDto.getPersonaDto().getTipoDocumento());
@@ -103,11 +114,9 @@ public class UsuarioService {
 
 		usuarioRepository.save(usuarioEntity);
 	}
-	
-	public List<UsuarioDto> consultarUsuarios(){
+
+	public List<UsuarioDto> consultarUsuarios() {
 		return null;
 	}
-	
-
 
 }

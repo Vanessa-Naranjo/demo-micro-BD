@@ -20,8 +20,8 @@ public class ClienteEntity {
 	@Column(unique = true)
 	private String email;
 	private String celular;
-	
-	@OneToOne (cascade = CascadeType.PERSIST)
+
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "PERSONA_ID", referencedColumnName = "ID")
 	private PersonaEntity personaEntity;
 

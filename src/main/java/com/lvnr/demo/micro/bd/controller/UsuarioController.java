@@ -24,16 +24,16 @@ public class UsuarioController {
 	public void crearUsuario(@RequestBody UsuarioDto usuarioDto) {
 		usuarioService.crearusuario(usuarioDto);
 	}
+
 	@PostMapping("/centro-trabajo/{centroTrabajoId}")
-	public void crearUsuariov2(@RequestBody UsuarioDto usuarioDto,@PathVariable Integer centroTrabajoId) {
+	public void crearUsuariov2(@RequestBody UsuarioDto usuarioDto, @PathVariable Integer centroTrabajoId) {
 		usuarioService.crearUsuariov2(usuarioDto, centroTrabajoId);
 	}
-	
-	 
 
-	/*@PostMapping("/crearusuariocuandoexista")
-	public void crearUsuarioCuandoExistePersona(@RequestBody UsuarioDto usuarioDto) {
-		usuarioService.crearUsuarioCuandoExistePersona(usuarioDto);
-	}*/
+	/*
+	 * @PostMapping("/crearusuariocuandoexista") public void
+	 * crearUsuarioCuandoExistePersona(@RequestBody UsuarioDto usuarioDto) {
+	 * usuarioService.crearUsuarioCuandoExistePersona(usuarioDto); }
+	 */
 
 }

@@ -18,13 +18,14 @@ public class CentroTrabajoController {
 
 	@Autowired
 	private CentroTrabajoService centroTrabajoService;
-	
-	@PostMapping ("/crearCentroTrabajo")
+
+	@PostMapping("/crearCentroTrabajo")
 	public CentroTrabajoDto crearCentroTrabajo(@RequestBody CentroTrabajoDto centroTrabajoDto) {
 		return centroTrabajoService.crearCentroTrabajo(centroTrabajoDto);
 	}
+
 	@GetMapping
-	public List<CentroTrabajoDto>consultarCentrosTrabajo(){
+	public List<CentroTrabajoDto> consultarCentrosTrabajo() {
 		return centroTrabajoService.consultarCentrosTrabajo();
 	}
 }
