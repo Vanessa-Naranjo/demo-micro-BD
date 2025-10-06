@@ -1,5 +1,7 @@
 package com.lvnr.demo.micro.bd.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,6 +30,7 @@ public class UsuarioEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CENTRO_ID", referencedColumnName = "ID")
+	@JsonBackReference
 	private CentroTrabajoEntity centroTrabajoEntity;
 
 	public Integer getId() {

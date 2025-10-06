@@ -1,5 +1,8 @@
 package com.lvnr.demo.micro.bd.controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,10 +33,14 @@ public class UsuarioController {
 		usuarioService.crearUsuariov2(usuarioDto, centroTrabajoId);
 	}
 
-	/*
-	 * @PostMapping("/crearusuariocuandoexista") public void
-	 * crearUsuarioCuandoExistePersona(@RequestBody UsuarioDto usuarioDto) {
-	 * usuarioService.crearUsuarioCuandoExistePersona(usuarioDto); }
-	 */
+	@GetMapping
+	public List<UsuarioDto> consultarUsuarios() {
+		return usuarioService.consultarUsuarios();
+	}
+	@GetMapping("/consultarUsuarioID/{Id}")
+	public UsuarioDto consultarUsuarioPorId(@PathVariable Integer Id) {
+		return usuarioService.consultarUsuarioPorId(Id);
+		
+	}
 
 }

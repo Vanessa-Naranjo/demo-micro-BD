@@ -2,6 +2,8 @@ package com.lvnr.demo.micro.bd.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +27,7 @@ public class CentroTrabajoEntity {
 	private Integer codigoPostal;
 
 	@OneToMany(mappedBy = "centroTrabajoEntity", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<UsuarioEntity> usuarios;
 
 	public Integer getId() {
