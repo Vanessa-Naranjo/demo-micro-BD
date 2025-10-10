@@ -21,7 +21,7 @@ public class CentroTrabajoService {
 
 	public CentroTrabajoDto crearCentroTrabajo(CentroTrabajoDto centroTrabajoDto) {
 		CentroTrabajoEntity centroTrabajoEntity = new CentroTrabajoEntity();
-		centroTrabajoEntity.setCodigo(centroTrabajoDto.getCodigo());
+		centroTrabajoEntity.setCodigoCentroTrabajo(centroTrabajoDto.getCodigoCentroTrabajo());
 		centroTrabajoEntity.setNombreCentro(centroTrabajoDto.getNombreCentro());
 		centroTrabajoEntity.setDireccion(centroTrabajoDto.getDireccion());
 		centroTrabajoEntity.setCodigoPostal(centroTrabajoDto.getCodigoPostal());
@@ -37,32 +37,9 @@ public class CentroTrabajoService {
 		List<CentroTrabajoEntity> centrosdeTrabajoEntity = centroTrabajoRepository.findAll();
 
 		for (CentroTrabajoEntity centroTrabajoEntity : centrosdeTrabajoEntity) {
-			CentroTrabajoDto centroTrabajoDto = new CentroTrabajoDto();
-			centroTrabajoDto.setId(centroTrabajoEntity.getId());
-			centroTrabajoDto.setCodigo(centroTrabajoEntity.getCodigo());
-			centroTrabajoDto.setNombreCentro(centroTrabajoEntity.getNombreCentro());
-			centroTrabajoDto.setDireccion(centroTrabajoEntity.getDireccion());
-			centroTrabajoDto.setCodigoPostal(centroTrabajoEntity.getCodigoPostal());
+			CentroTrabajoDto centroTrabajoDto = mapperCentroTrabajo(centroTrabajoEntity);
 
-			// centroTrabajoDto.setUsuarios(new ArrayList<>());
-			List<UsuarioDto> usuariosDto = new ArrayList<>();
-
-			for (UsuarioEntity usuarioEntity : centroTrabajoEntity.getUsuarios()) {
-				UsuarioDto usuarioDto = new UsuarioDto();
-				usuarioDto.setCodigoUsuario(usuarioEntity.getCodigoUsuario());
-				// centroTrabajoDto.getUsuarios().add(usuarioDto);
-
-				PersonaDto personaDto = new PersonaDto();
-				personaDto.setId(usuarioEntity.getPersonaEntity().getId());
-				personaDto.setTipoDocumento(usuarioEntity.getPersonaEntity().getTipoDocumento());
-				personaDto.setDocumento(usuarioEntity.getPersonaEntity().getDocumento());
-				personaDto.setNombres(usuarioEntity.getPersonaEntity().getNombres());
-				personaDto.setApellidos(usuarioEntity.getPersonaEntity().getApellidos());
-				usuarioDto.setPersonaDto(personaDto);
-
-				usuariosDto.add(usuarioDto);
-
-			}
+			List<UsuarioDto> usuariosDto = mapperUsuarios(centroTrabajoEntity);
 
 			centroTrabajoDto.setUsuarios(usuariosDto);
 			centrosdeTrabajoDto.add(centroTrabajoDto);
@@ -71,4 +48,67 @@ public class CentroTrabajoService {
 		return centrosdeTrabajoDto;
 	}
 
+	public CentroTrabajoDto consultarCentroTrabajoCodigo(Integer codigoCentroTrabajo) {
+
+		CentroTrabajoEntity centroTrabajoEntity = this.centroTrabajoRepository
+				.findByCodigoCentroTrabajo(codigoCentroTrabajo);
+
+		CentroTrabajoDto centroTrabajoDto = mapperCentroTrabajo(centroTrabajoEntity);
+
+		List<UsuarioDto> usuariosDto = mapperUsuarios(centroTrabajoEntity);
+		centroTrabajoDto.setUsuarios(usuariosDto);
+
+		return centroTrabajoDto;
+
+	}
+
+	public String eliminarCentroTrabajo(Integer codigoCentroTrabajo) {
+		CentroTrabajoEntity centroTrabajoEntity = this.centroTrabajoRepository
+				.findByCodigoCentroTrabajo(codigoCentroTrabajo);
+
+		if (centroTrabajoEntity != null) {
+			this.centroTrabajoRepository.delete(centroTrabajoEntity);
+			return "Se ha eliminado el centro de trabajo: " + codigoCentroTrabajo;
+
+		}
+
+		return "El codigo no existe " + codigoCentroTrabajo;
+
+	}
+
+	private PersonaDto mapperPersona(UsuarioEntity usuarioEntity) {
+		PersonaDto personaDto = new PersonaDto();
+		personaDto.setId(usuarioEntity.getPersonaEntity().getId());
+		personaDto.setTipoDocumento(usuarioEntity.getPersonaEntity().getTipoDocumento());
+		personaDto.setDocumento(usuarioEntity.getPersonaEntity().getDocumento());
+		personaDto.setNombres(usuarioEntity.getPersonaEntity().getNombres());
+		personaDto.setApellidos(usuarioEntity.getPersonaEntity().getApellidos());
+		return personaDto;
+	}
+
+	private CentroTrabajoDto mapperCentroTrabajo(CentroTrabajoEntity centroTrabajoEntity) {
+		CentroTrabajoDto centroTrabajoDto = new CentroTrabajoDto();
+		centroTrabajoDto.setId(centroTrabajoEntity.getId());
+		centroTrabajoDto.setCodigoCentroTrabajo(centroTrabajoEntity.getCodigoCentroTrabajo());
+		centroTrabajoDto.setNombreCentro(centroTrabajoEntity.getNombreCentro());
+		centroTrabajoDto.setDireccion(centroTrabajoEntity.getDireccion());
+		centroTrabajoDto.setCodigoPostal(centroTrabajoEntity.getCodigoPostal());
+		return centroTrabajoDto;
+	}
+
+	private List<UsuarioDto> mapperUsuarios(CentroTrabajoEntity centroTrabajoEntity) {
+		List<UsuarioDto> usuariosDto = new ArrayList<>();
+
+		for (UsuarioEntity usuarioEntity : centroTrabajoEntity.getUsuarios()) {
+			UsuarioDto usuarioDto = new UsuarioDto();
+			usuarioDto.setCodigoUsuario(usuarioEntity.getCodigoUsuario());
+
+			PersonaDto personaDto = mapperPersona(usuarioEntity);
+			usuarioDto.setPersonaDto(personaDto);
+
+			usuariosDto.add(usuarioDto);
+
+		}
+		return usuariosDto;
+	}
 }

@@ -20,7 +20,8 @@ public class CentroTrabajoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String codigo;
+	@Column(unique = true)
+	private Integer codigoCentroTrabajo;
 	@Column(name = "NOMBRECENTRO")
 	private String nombreCentro;
 	private String direccion;
@@ -38,12 +39,12 @@ public class CentroTrabajoEntity {
 		this.id = id;
 	}
 
-	public String getCodigo() {
-		return codigo;
+	public Integer getCodigoCentroTrabajo() {
+		return codigoCentroTrabajo;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodigoCentroTrabajo(Integer codigoCentroTrabajo) {
+		this.codigoCentroTrabajo = codigoCentroTrabajo;
 	}
 
 	public String getNombreCentro() {

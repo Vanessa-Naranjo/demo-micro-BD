@@ -2,6 +2,7 @@ package com.lvnr.demo.micro.bd.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,10 +38,21 @@ public class UsuarioController {
 	public List<UsuarioDto> consultarUsuarios() {
 		return usuarioService.consultarUsuarios();
 	}
+
 	@GetMapping("/consultarUsuarioID/{Id}")
 	public UsuarioDto consultarUsuarioPorId(@PathVariable Integer Id) {
 		return usuarioService.consultarUsuarioPorId(Id);
-		
+
+	}
+
+	@GetMapping("/consultarUsuarioPorCodigo/{codigoUsuario}")
+	public UsuarioDto consultarUsuarioPorCodigoUsuario(@PathVariable Integer codigoUsuario) {
+		return usuarioService.consultarUsuarioPorCodigoUsuario(codigoUsuario);
+	}
+
+	@DeleteMapping("/{id}")
+	public String eliminarUsuarioPorId(@PathVariable Integer id) {
+		return usuarioService.eliminarUsuarioPorId(id);
 	}
 
 }

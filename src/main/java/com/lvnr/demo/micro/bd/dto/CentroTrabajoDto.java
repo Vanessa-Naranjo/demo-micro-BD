@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class CentroTrabajoDto {
 
 	private Integer id;
-	private String codigo;
+	private Integer codigoCentroTrabajo;
 	private String nombreCentro;
 	private String direccion;
-	private int codigoPostal;
+	private Integer codigoPostal;
 	private List<UsuarioDto> usuarios;
 
 	public Integer getId() {
@@ -23,12 +23,12 @@ public class CentroTrabajoDto {
 		this.id = id;
 	}
 
-	public String getCodigo() {
-		return codigo;
+	public Integer getCodigoCentroTrabajo() {
+		return codigoCentroTrabajo;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodigoCentroTrabajo(Integer codigoCentroTrabajo) {
+		this.codigoCentroTrabajo = codigoCentroTrabajo;
 	}
 
 	public String getNombreCentro() {
@@ -47,11 +47,11 @@ public class CentroTrabajoDto {
 		this.direccion = direccion;
 	}
 
-	public int getCodigoPostal() {
+	public Integer getCodigoPostal() {
 		return codigoPostal;
 	}
 
-	public void setCodigoPostal(int codigoPostal) {
+	public void setCodigoPostal(Integer codigoPostal) {
 		this.codigoPostal = codigoPostal;
 	}
 
