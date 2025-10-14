@@ -33,10 +33,7 @@ public class PersonaService {
 
 	public PersonaDto crearPersona(PersonaDto personaDto) {
 		PersonaEntity personaEntity = new PersonaEntity();
-		personaEntity.setTipoDocumento(personaDto.getTipoDocumento());
-		personaEntity.setDocumento(personaDto.getDocumento());
-		personaEntity.setNombres(personaDto.getNombres());
-		personaEntity.setApellidos(personaDto.getApellidos());
+		mapperPersona(personaDto, personaEntity);
 		personaEntity.setFechaCreacion(LocalDate.now());
 		personaEntity.setFechaModificacion(LocalDateTime.now());
 
@@ -46,13 +43,20 @@ public class PersonaService {
 		return personaDto;
 	}
 
-	public PersonaDto actualizarPersona(String id, PersonaDto personaDto) {
-		PersonaEntity personaEntity = new PersonaEntity();
+	private void mapperPersona(PersonaDto personaDto, PersonaEntity personaEntity) {
 		personaEntity.setTipoDocumento(personaDto.getTipoDocumento());
 		personaEntity.setDocumento(personaDto.getDocumento());
 		personaEntity.setNombres(personaDto.getNombres());
 		personaEntity.setApellidos(personaDto.getApellidos());
-		personas.add(personaDto);
+	}
+
+	public PersonaDto actualizarPersona(Integer id, PersonaDto personaDto) {
+		PersonaEntity personaEntity = this.personaRepository.findById(id).get();
+		mapperPersona(personaDto, personaEntity);
+		personaEntity.setFechaModificacion(LocalDateTime.now());
+
+		this.personaRepository.save(personaEntity);
+
 		return personaDto;
 	}
 

@@ -39,7 +39,7 @@ public class PersonaController {
 	}
 
 	@PutMapping("/{id}")
-	public PersonaDto actualizarPersona(@PathVariable String id, @RequestBody PersonaDto personaDto) {
+	public PersonaDto actualizarPersona(@PathVariable Integer id, @RequestBody PersonaDto personaDto) {
 		return personaService.actualizarPersona(id, personaDto);
 
 	}
